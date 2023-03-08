@@ -3,17 +3,17 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import LogoComponent from "../Components/LogoComponent";
-const inter = Inter({ subsets: ["latin"] });
 import { useState, useEffect } from "react";
 import { setLazyProp } from "next/dist/server/api-utils";
 import { TypeAnimation } from "react-type-animation";
+import moment from "moment";
 
 export default function Home() {
   const [names, setNames] = useState([]);
-
   const [search, setSearch] = useState(``);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState();
 
   const getNames = async () => {
     setLoading(true);
@@ -27,7 +27,6 @@ export default function Home() {
         setError(true);
       }, 5000);
       const data = await res.json();
-
       setLoading(false);
       setNames(data);
     } catch (err) {
