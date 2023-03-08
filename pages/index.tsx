@@ -12,22 +12,26 @@ export default function Home() {
 
   const [search, setSearch] = useState(``);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const getNames = async () => {
     setLoading(true);
-    const res = await fetch(
-      `http://localhost:3000/api/generateNames?slug=${search}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      }
-    );
-    const data = await res.json();
-    console.log(data);
-    setLoading(false);
-    setNames(data);
+    try {
+      setError(false);
+      const res = await fetch(
+        `http://localhost:3000/api/generateNames?slug=${search}`
+        // `https://brandhive.vercel.app/api/generateNames?slug=${search}`,
+      );
+      setTimeout(function () {
+        setError(true);
+      }, 5000);
+      const data = await res.json();
+    
+      setLoading(false);
+      setNames(data);
+    } catch (err) {
+      setError(true);
+    }
   };
 
   return (
@@ -55,7 +59,7 @@ export default function Home() {
             onChange={(e) => setSearch(e.target.value)}
             type="text"
             placeholder="Explain your business "
-            className={`md:w-1/4 h-12 px-4 text-xl border-2 border-gray-300 rounded-lg focus:outline-none  focus:border-blue-500`}
+            className={`md:w-1/2 lg:w-1/4 h-12 px-4 text-xl border-2 border-gray-300 rounded-lg focus:outline-none  focus:border-blue-500`}
           />
           <button
             onClick={getNames}
@@ -82,22 +86,24 @@ export default function Home() {
           <div
             className={`flex flex-col w-full space-y-4 place-content-center`}
           >
-            {" "}
-            <h2 className={`font-base text-sm text-gray-400 text-center`}>
-              Generating names...
-            </h2>
-            {` `}
+            {error ? (
+              <h2 className={`font-base text-sm text-red-400 text-center`}>
+                Error occured , Please type in your business or refresh
+              </h2>
+            ) : (
+              <h2 className={`font-base text-sm text-green-600 text-center`}>
+                Generating names...
+              </h2>
+            )}
           </div>
         ) : (
           <div
             className={`flex flex-col w-full space-y-4 lg:px-96 place-content-center`}
           >
-            
             <div
-              className={`flex flex-wrap  gap-4  items-center w-fit space-x-2 place-content-center`}
+              className={`flex flex-wrap mx-auto gap-4  items-center w-fit space-x-2 place-content-center`}
             >
               {names.length > 0 ? (
-                
                 names.map((name, index) => {
                   return (
                     <button
@@ -109,8 +115,10 @@ export default function Home() {
                   );
                 })
               ) : (
-                <h2 className={`font-base text-sm self-center w-full m-auto text-gray-400 text-center`}>
-                  please type in your business 
+                <h2
+                  className={`font-base text-sm self-center w-full m-auto text-gray-400 text-center`}
+                >
+                  please type in your business
                 </h2>
               )}
             </div>
