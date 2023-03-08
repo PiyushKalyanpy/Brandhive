@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>My page title</title>
+        <title>Brandhive</title>
         <meta property="og:title" content="Brandhive" />
         <meta property="og:site_name" content="Brandhive" />
         <meta property="og:url" content="https://brandhive.vercel.app" />
