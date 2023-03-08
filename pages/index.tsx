@@ -88,7 +88,7 @@ export default function Home() {
           AI based Brand Name Generator
         </h5>
         
-        {/* ----------------------------------------------- Search  ---------------------------------------- */}
+        {/* ----------------------------------------------- Search   ---------------------------------------- */}
         <div className="w-full flex flex-col items-center">
         
          <div className={`flex  place-content-center w-full space-x-4 `}>
