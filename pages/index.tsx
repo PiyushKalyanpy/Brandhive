@@ -39,16 +39,16 @@ export default function Home() {
     <>
       <Head>
         <title>Brandhive</title>
-        <meta property="og:title" content="Brandhive" />
-        <meta property="og:site_name" content="Brandhive" />
-        <meta property="og:url" content="https://brandhive.vercel.app" />
+        <meta property=" title" content="Brandhive" />
+        <meta property=" site_name" content="Brandhive" />
+        <meta property=" url" content="https://brandhive.vercel.app" />
         <meta
-          property="og:description"
+          property=" description"
           content="Welcome to Brandhive, the ultimate platform for generating new and creative brand names using the power of artificial intelligence (AI). Our website utilizes state-of-the-art algorithms and deep learning models to generate unique, catchy, and memorable brand names that will set your business apart from the competition."
         />
-        <meta property="og:type" content="website" />
+        <meta property=" type" content="website" />
         <meta
-          property="og:image"
+          property=" image"
           content="https://brandhive.vercel.app/logo.svg"
         />
       </Head>
@@ -57,7 +57,8 @@ export default function Home() {
           type: "website",
           url: "https://brandhive.vercel.app/",
           title: "Brandhive",
-          description: "Welcome to Brandhive,developed by Piyush Kalyan, the ultimate platform for generating new and creative brand names using the power of artificial intelligence (AI). Our website utilizes state-of-the-art algorithms and deep learning models to generate unique, catchy, and memorable brand names that will set your business apart from the competition.",
+          description:
+            "Welcome to Brandhive,developed by Piyush Kalyan, the ultimate platform for generating new and creative brand names using the power of artificial intelligence (AI). Our website utilizes state-of-the-art algorithms and deep learning models to generate unique, catchy, and memorable brand names that will set your business apart from the competition.",
           images: [
             {
               url: "https://brandhive.vercel.app/ss.png",
