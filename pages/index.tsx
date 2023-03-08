@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { NextSeo } from "next-seo";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
@@ -36,6 +37,37 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>My page title</title>
+        <meta property="og:title" content="Brandhive" />
+        <meta property="og:site_name" content="Brandhive" />
+        <meta property="og:url" content="https://brandhive.vercel.app" />
+        <meta
+          property="og:description"
+          content="Welcome to Brandhive, the ultimate platform for generating new and creative brand names using the power of artificial intelligence (AI). Our website utilizes state-of-the-art algorithms and deep learning models to generate unique, catchy, and memorable brand names that will set your business apart from the competition."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://brandhive.vercel.app/logo.svg"
+        />
+      </Head>
+      <NextSeo
+        openGraph={{
+          type: "website",
+          url: "https://www.example.com/page",
+          title: "Open Graph Title",
+          description: "Open Graph Description",
+          images: [
+            {
+              url: "./logo.svg",
+              width: 800,
+              height: 600,
+              alt: "Og Image Alt",
+            },
+          ],
+        }}
+      />
       <div
         className={`flex flex-col  w-screen h-screen items-center md:px-20 py-10 space-y-10`}
       >
