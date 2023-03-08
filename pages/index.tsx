@@ -87,10 +87,12 @@ export default function Home() {
         <h5 className={`font-base text-md  text-center text-gray-400 `}>
           AI based Brand Name Generator
         </h5>
-
+        
         {/* ----------------------------------------------- Search  ---------------------------------------- */}
-        <div className={`flex  place-content-center w-full space-x-4 `}>
-          <p className="w-fit ">40/{40 - search.length}</p>
+        <div className="w-full flex flex-col items-center">
+        
+         <div className={`flex  place-content-center w-full space-x-4 `}>
+          
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -119,6 +121,9 @@ export default function Home() {
             </svg>
           </button>
         </div>
+        <p className="w-fit text-center text-gray-400 ">40/{40 - search.length}</p>
+        </div>
+       
 
         {/* ----------------------------------------------- Content ---------------------------------------- */}
         {loading ? (
