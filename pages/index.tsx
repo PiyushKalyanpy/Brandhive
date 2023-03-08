@@ -6,6 +6,7 @@ import LogoComponent from "../Components/LogoComponent";
 const inter = Inter({ subsets: ["latin"] });
 import { useState, useEffect } from "react";
 import { setLazyProp } from "next/dist/server/api-utils";
+import { TypeAnimation } from "react-type-animation";
 
 export default function Home() {
   const [names, setNames] = useState([]);
@@ -19,14 +20,14 @@ export default function Home() {
     try {
       setError(false);
       const res = await fetch(
-        `http://localhost:3000/api/generateNames?slug=${search}`
-        // `https://brandhive.vercel.app/api/generateNames?slug=${search}`,
+        // `http://localhost:3000/api/generateNames?slug=${search}`
+        `https://brandhive.vercel.app/api/generateNames?slug=${search}`
       );
       setTimeout(function () {
         setError(true);
       }, 5000);
       const data = await res.json();
-    
+
       setLoading(false);
       setNames(data);
     } catch (err) {
@@ -39,10 +40,10 @@ export default function Home() {
       <div
         className={`flex flex-col  w-screen h-screen items-center md:px-20 py-10 space-y-10`}
       >
-        {/* Logo */}
+        {/* ----------------------------------------------- Logo ---------------------------------------- */}
         <LogoComponent />
 
-        {/* Hero Section */}
+        {/* ----------------------------------------------- Hero Section ---------------------------------------- */}
         <div className={`w-3/4 mx-auto`}>
           <h2 className={`font-base text-2xl md:text-5xl text-center `}>
             Empowering Businesses with
@@ -51,15 +52,20 @@ export default function Home() {
             Brand Names.
           </h2>
         </div>
+        <h5 className={`font-base text-md  text-center text-gray-400 `}>
+          AI based Brand Name Generator
+        </h5>
 
-        {/* Search bar */}
+        {/* ----------------------------------------------- Search  ---------------------------------------- */}
         <div className={`flex  place-content-center w-full space-x-4 `}>
+          <p className="w-fit ">40/{40 - search.length}</p>
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             type="text"
+            maxLength={40}
             placeholder="Explain your business "
-            className={`md:w-1/2 lg:w-1/4 h-12 px-4 text-xl border-2 border-gray-300 rounded-lg focus:outline-none  focus:border-blue-500`}
+            className={`md:w-1/2 font-base lg:w-1/4 h-12 px-4 text-xl border-2 border-gray-300 rounded-lg focus:outline-none  focus:border-blue-500`}
           />
           <button
             onClick={getNames}
@@ -82,6 +88,7 @@ export default function Home() {
           </button>
         </div>
 
+        {/* ----------------------------------------------- Content ---------------------------------------- */}
         {loading ? (
           <div
             className={`flex flex-col w-full space-y-4 place-content-center`}
