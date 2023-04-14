@@ -19,15 +19,15 @@ This project is perfect for entrepreneurs, marketers, and content creators looki
 
 - Go to directory
 ```
-$ cd Brandhive
+cd Brandhive
 ```
 - Install Dependencies
 ```
-$ npm i
+npm i
 ```
 - Start LocalHost Server
 ```
-$ npm run dev
+npm run dev
 ```
 ## [How To Contribute](CONTRIBUTIONS%20GUIDE.md)
 Thanks for for contributing to this project. We greatly appreciate any work contributed, no matter how small!
